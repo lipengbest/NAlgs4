@@ -14,7 +14,7 @@ namespace AlgsCmd
     {
         static void Main(string[] args)
         {
-            Assembly assembly = Assembly.GetAssembly(typeof(In));
+            Assembly assembly = Assembly.GetAssembly(typeof(StdIn));
             string nameSpace = "NAlgs4";
 
             if (args.Length > 0)

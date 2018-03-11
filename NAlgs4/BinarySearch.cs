@@ -31,13 +31,6 @@ namespace NAlgs4
             {
                 Console.WriteLine(arg);
             }
-
-            string line = Console.ReadLine();
-            while (line != null)
-            {
-                Console.WriteLine(line);
-                line = Console.ReadLine();
-            }
         }
     }
 }

@@ -318,7 +318,7 @@ namespace NAlgs4
             }
             else
             {
-                throw new InvalidOperationException("end of file might have been reached")
+                throw new InvalidOperationException("end of file might have been reached");
             }
         }
 
