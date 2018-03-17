@@ -107,7 +107,7 @@ namespace NAlgs4
         {
             if (!HasNextLine())
                 return string.Empty;
-            return ReadLine() + Console.In.ReadToEnd();
+            return ReadLine() + "\n" + Console.In.ReadToEnd();
         }
 
         /// <summary>
@@ -328,25 +328,31 @@ namespace NAlgs4
         /// <param name="args">the command-line arguments</param>
         private static void Test(string[] args)
         {
-            StdOut.Print("Type a string: ");
-            string s = ReadString();
-            StdOut.Println("Your string was: " + s);
-            StdOut.Println();
+            //StdOut.Print("Type a string: ");
+            //string s = ReadString();
+            //StdOut.Println("Your string was: " + s);
+            //StdOut.Println();
 
-            StdOut.Print("Type an int: ");
-            int a = ReadInt();
-            StdOut.Println("Your int was: " + a);
-            StdOut.Println();
+            //StdOut.Print("Type an int: ");
+            //int a = ReadInt();
+            //StdOut.Println("Your int was: " + a);
+            //StdOut.Println();
 
-            StdOut.Print("Type a boolean: ");
-            bool b = ReadBool();
-            StdOut.Println("Your boolean was: " + b);
-            StdOut.Println();
+            //StdOut.Print("Type a boolean: ");
+            //bool b = ReadBool();
+            //StdOut.Println("Your boolean was: " + b);
+            //StdOut.Println();
 
-            StdOut.Print("Type a double: ");
-            double c = ReadDouble();
-            StdOut.Println("Your double was: " + c);
-            StdOut.Println();
+            //StdOut.Print("Type a double: ");
+            //double c = ReadDouble();
+            //StdOut.Println("Your double was: " + c);
+            //StdOut.Println();
+
+            while (!StdIn.IsEmpty)
+            {
+                int key = StdIn.ReadInt();
+                StdOut.Println(key);
+            }           
         }
     }
 }

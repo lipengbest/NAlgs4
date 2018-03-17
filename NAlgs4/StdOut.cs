@@ -84,62 +84,99 @@ namespace NAlgs4
         /// </summary>
         public static void Print()
         {
-
+            Console.Out.Flush();
         }
 
         /// <summary>
         /// Prints an object to standard output and flushes standard output.
         /// </summary>
         /// <param name="x">the object to print</param>
-        public static void Print(object x) => Console.Write(x);
+        public static void Print(object x)
+        {
+            Console.Write(x);
+            Console.Out.Flush();
+        }
+
 
         /// <summary>
         /// Prints a boolean to standard output and flushes standard output.
         /// </summary>
         /// <param name="x">the boolean to print</param>
-        public static void Print(bool x) => Console.Write(x);
+        public static void Print(bool x)
+        {
+            Console.Write(x);
+            Console.Out.Flush();
+        }
 
         /// <summary>
         /// Prints a character to standard output and flushes standard output.
         /// </summary>
         /// <param name="x">the character to print</param>
-        public static void Print(char x) => Console.Write(x);
+        public static void Print(char x)
+        {
+            Console.Write(x);
+            Console.Out.Flush();
+        }
 
         /// <summary>
         /// Prints a double to standard output and flushes standard output.
         /// </summary>
         /// <param name="x">the double to print</param>
-        public static void Print(double x) => Console.Write(x);
+        public static void Print(double x)
+        {
+            Console.Write(x);
+            Console.Out.Flush();
+        }
 
         /// <summary>
         /// Prints a float to standard output and flushes standard output.
         /// </summary>
         /// <param name="x">the float to print</param>
-        public static void Print(float x) => Console.Write(x);
+        public static void Print(float x)
+        {
+            Console.Write(x);
+            Console.Out.Flush();
+        }
 
         /// <summary>
         /// Prints an integer to standard output and flushes standard output.
         /// </summary>
         /// <param name="x">the integer to print</param>
-        public static void Print(int x) => Console.Write(x);
+        public static void Print(int x)
+        {
+            Console.Write(x);
+            Console.Out.Flush();
+        }
 
         /// <summary>
         /// Prints a long integer to standard output and flushes standard output.
         /// </summary>
         /// <param name="x">the long integer to print</param>
-        public static void Print(long x) => Console.Write(x);
+        public static void Print(long x)
+        {
+            Console.Write(x);
+            Console.Out.Flush();
+        }
 
         /// <summary>
         /// Prints a short integer to standard output and flushes standard output.
         /// </summary>
         /// <param name="x">the short integer to print</param>
-        public static void Print(short x) => Console.Write(x);
+        public static void Print(short x)
+        {
+            Console.Write(x);
+            Console.Out.Flush();
+        }
 
         /// <summary>
         /// Prints a byte to standard output and flushes standard output.
         /// </summary>
         /// <param name="x">the byte to print</param>
-        public static void Print(byte x) => Console.Write(x);
+        public static void Print(byte x)
+        {
+            Console.Write(x);
+            Console.Out.Flush();
+        }
 
         /// <summary>
         /// Prints a formatted string to standard output, using the specified format

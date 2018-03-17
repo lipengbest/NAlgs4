@@ -15,21 +15,28 @@ namespace NAlgs4
             while (lo <= hi)
             {
                 int mid = lo + (hi - lo) / 2;
-                if (mid < a[mid])
+                if (key < a[mid])
                     hi = mid - 1;
-                else if (mid > a[mid])
+                else if (key > a[mid])
                     lo = mid + 1;
-                return mid;
+                else return mid;
             }
             return -1;
         }
 
         private static void Test(string[] args)
         {
-            Console.WriteLine("Hello World!");
-            foreach (var arg in args)
+            int[] whitelist = In.ReadInts(args[0]);
+
+            Array.Sort(whitelist);
+
+            while (!StdIn.IsEmpty)
             {
-                Console.WriteLine(arg);
+                int key = StdIn.ReadInt();
+                if (Rank(key, whitelist) == -1)
+                {
+                    StdOut.Println(key);
+                }
             }
         }
     }
