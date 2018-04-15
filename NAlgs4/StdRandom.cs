@@ -16,7 +16,7 @@ namespace NAlgs4
     public static class StdRandom
     {
         private static Random random = new Random();
-        private static int seed = DateTime.Now.Millisecond;
+        private static long seed = DateTime.Now.Ticks;
 
         /// <summary>
         /// Sets the seed of the pseudo-random number generator.
@@ -25,13 +25,13 @@ namespace NAlgs4
         /// Ordinarily, you set this property at most once per program.
         /// </summary>
         /// <value>the seed</value>
-        public static int Seed
+        public static long Seed
         {
             get { return seed; }
             set
             {
                 seed = value;
-                random = new Random(seed);
+                random = new Random((int)seed);
             }
         }
 
@@ -333,6 +333,255 @@ namespace NAlgs4
 
             // can't reach here
             return -1;
+        }
+
+        /// <summary>
+        /// Returns a random real number from an exponential distribution
+        /// </summary>
+        /// <param name="lambda">the rate of the exponential distribution</param>
+        /// <returns>a random real number from an exponential distribution with rate <c>lambda</c></returns>
+        /// <exception cref="ArgumentException"></exception>
+        public static double Exp(double lambda)
+        {
+            if (!(lambda > 0.0))
+                throw new ArgumentException($"lambda must be positive: {lambda}");
+            return -Math.Log(1 - Uniform()) / lambda;
+        }
+
+        /// <summary>
+        /// Rearranges the elements of the specified array in uniformly random order.
+        /// </summary>
+        /// <param name="a">the array to shuffle</param>
+        /// <exception cref="ArgumentNullException"></exception>
+        public static void Shuffle(object[] a)
+        {
+            ValidateNotNull(a);
+            int n = a.Length;
+            for (int i = 0; i < n; i++)
+            {
+                int r = i + Uniform(n - i); // between i and n-1
+                object temp = a[i];
+                a[i] = a[r];
+                a[r] = temp;
+            }
+        }
+
+        /// <summary>
+        /// Rearranges the elements of the specified array in uniformly random order.
+        /// </summary>
+        /// <param name="a">the array to shuffle</param>
+        /// <exception cref="ArgumentNullException"></exception>
+        public static void Shuffle(double[] a)
+        {
+            ValidateNotNull(a);
+            int n = a.Length;
+            for (int i = 0; i < n; i++)
+            {
+                int r = i + Uniform(n - i); // between i and n-1
+                double temp = a[i];
+                a[i] = a[r];
+                a[r] = temp;
+            }
+        }
+
+        /// <summary>
+        /// Rearranges the elements of the specified array in uniformly random order.
+        /// </summary>
+        /// <param name="a">the array to shuffle</param>
+        /// <exception cref="ArgumentNullException"></exception>
+        public static void Shuffle(int[] a)
+        {
+            ValidateNotNull(a);
+            int n = a.Length;
+            for (int i = 0; i < n; i++)
+            {
+                int r = i + Uniform(n - i);     // between i and n-1
+                int temp = a[i];
+                a[i] = a[r];
+                a[r] = temp;
+            }
+        }
+
+        /// <summary>
+        /// Rearranges the elements of the specified array in uniformly random order.
+        /// </summary>
+        /// <param name="a">the array to shuffle</param>
+        /// <exception cref="ArgumentNullException"></exception>
+        public static void Shuffle(char[] a)
+        {
+            ValidateNotNull(a);
+            int n = a.Length;
+            for (int i = 0; i < n; i++)
+            {
+                int r = i + Uniform(n - i);     // between i and n-1
+                char temp = a[i];
+                a[i] = a[r];
+                a[r] = temp;
+            }
+        }
+
+        /// <summary>
+        /// Rearranges the elements of the specified subarray in uniformly random order.
+        /// </summary>
+        /// <param name="a">the array to shuffle</param>
+        /// <param name="lo">the left endpoint (inclusive)</param>
+        /// <param name="hi">the right endpoint (exclusive)</param>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
+        public static void Shuffle(object[] a, int lo, int hi)
+        {
+            ValidateNotNull(a);
+            ValidateSubarrayIndices(lo, hi, a.Length);
+
+            for (int i = lo; i < hi; i++)
+            {
+                int r = i + Uniform(hi - i); // between i and hi-1
+                object temp = a[i];
+                a[i] = a[r];
+                a[r] = temp;
+            }
+        }
+
+        /// <summary>
+        /// Rearranges the elements of the specified subarray in uniformly random order.
+        /// </summary>
+        /// <param name="a">the array to shuffle</param>
+        /// <param name="lo">the left endpoint (inclusive)</param>
+        /// <param name="hi">the right endpoint (exclusive)</param>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
+        public static void Shuffle(double[] a, int lo, int hi)
+        {
+            ValidateNotNull(a);
+            ValidateSubarrayIndices(lo, hi, a.Length);
+
+            for (int i = lo; i < hi; i++)
+            {
+                int r = i + Uniform(hi - i); // between i and hi-1
+                double temp = a[i];
+                a[i] = a[r];
+                a[r] = temp;
+            }
+        }
+
+        /// <summary>
+        /// Rearranges the elements of the specified subarray in uniformly random order.
+        /// </summary>
+        /// <param name="a">the array to shuffle</param>
+        /// <param name="lo">the left endpoint (inclusive)</param>
+        /// <param name="hi">the right endpoint (exclusive)</param>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
+        public static void Shuffle(int[] a, int lo, int hi)
+        {
+            ValidateNotNull(a);
+            ValidateSubarrayIndices(lo, hi, a.Length);
+
+            for (int i = lo; i < hi; i++)
+            {
+                int r = i + Uniform(hi - i); // between i and hi-1
+                int temp = a[i];
+                a[i] = a[r];
+                a[r] = temp;
+            }
+        }
+
+        /// <summary>
+        /// Returns a uniformly random permutation of <em>n</em> elements.
+        /// </summary>
+        /// <param name="n">number of elements</param>
+        /// <returns>an array of length <c>n</c> that is a uniformly random permutation of <c>0</c>, <c>1</c>, ..., </returns>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
+        public static int[] Permutation(int n)
+        {
+            if (n < 0) throw new ArgumentOutOfRangeException("argument is negative");
+            int[] perm = new int[n];
+            for (int i = 0; i < n; i++)
+            {
+                perm[i] = i;
+            }
+            Shuffle(perm);
+            return perm;
+        }
+
+        /// <summary>
+        /// Returns a uniformly random permutation of <em>k</em> of <em>n</em> elements.
+        /// </summary>
+        /// <param name="n">number of elements</param>
+        /// <param name="k">number of elements to select</param>
+        /// <returns>
+        /// an array of length <c>k</c> that is a uniformly random permutation
+        /// of <c>k</c> of the elements from <c>0</c>, <c>1</c>, ..., <c>n-1</c>
+        /// </returns>
+        public static int[] Permutation(int n, int k)
+        {
+            if (n < 0) throw new ArgumentOutOfRangeException("argument is negative");
+            if (k < 0 || k > n) throw new ArgumentOutOfRangeException("k must be between 0 and n");
+            int[] perm = new int[k];
+            for (int i = 0; i < k; i++)
+            {
+                int r = Uniform(i + 1);
+                perm[i] = perm[r];
+                perm[r] = i;
+            }
+            for (int i = k; i < n; i++)
+            {
+                int r = Uniform(i + 1);
+                if (r < k) perm[r] = i;
+            }
+            return perm;
+        }
+
+        // throw an ArgumentNullException if x is null
+        // (x can be of type Object[], double[], int[], ...)
+        private static void ValidateNotNull(object x)
+        {
+            if (x == null)
+            {
+                throw new ArgumentNullException("argument is null");
+            }
+        }
+
+        // throw an exception unless 0 <= lo <= hi <= length
+        private static void ValidateSubarrayIndices(int lo, int hi, int lenght)
+        {
+            if (lo < 0 || hi > lenght || lo > hi)
+            {
+                throw new ArgumentOutOfRangeException($"subarray indices out of bounds: [{lo}, {hi})");
+            }
+        }
+
+        /// <summary>
+        /// Unit tests the methods in this class.
+        /// </summary>
+        /// <param name="args">the command-line arguments</param>
+        private static void Test(string[] args)
+        {
+            int n = int.Parse(args[0]);
+            if (args.Length == 2)
+                Seed = long.Parse(args[1]);
+            double[] probabilities = { 0.5, 0.3, 0.1, 0.1 };
+            int[] frequencies = { 5, 3, 1, 1 };
+            string[] a = "A B C D E F G".Split(' ');
+
+            StdOut.Println($"seed = {Seed}");
+            for (int i = 0; i < n; i++)
+            {
+                StdOut.Printf("{0, 2}", Uniform(100));
+                StdOut.Printf("{0,10:f5}", Uniform(10.0, 99.0));
+                StdOut.Printf("{0, 7}", Bernoulli(0.5));
+                StdOut.Printf("{0, 9:f5}", Gaussian(9.0, 0.2));
+                StdOut.Printf("{0, 3}", Discrete(probabilities));
+                StdOut.Printf("{0, 3}", Discrete(frequencies));
+                StdOut.Printf("{0, 13}", Uniform(100000000000L));
+                StdOut.Print("  ");
+                Shuffle(a);
+                foreach (string s in a)
+                {
+                    StdOut.Print(s);
+                }
+                StdOut.Println();
+            }
         }
     }
 }

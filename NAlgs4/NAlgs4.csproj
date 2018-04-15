@@ -41,10 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Average.cs" />
     <Compile Include="BinarySearch.cs" />
     <Compile Include="In.cs" />
     <Compile Include="Out.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RandomSeq.cs" />
     <Compile Include="StdIn.cs" />
     <Compile Include="StdOut.cs" />
     <Compile Include="StdRandom.cs" />
